@@ -244,7 +244,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Current User Email: [${user?.email ?? "No user logged in"}',
+              'Current User Email: ${user?.email ?? "No user logged in"}',
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 24),
