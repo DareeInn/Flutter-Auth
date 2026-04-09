@@ -1,17 +1,72 @@
-# activity13_app
+🔐 Flutter Firebase Auth App
 
-A new Flutter project.
+This project is a Flutter application that implements Firebase Authentication using email and password. It allows users to register, log in, view their profile, update their password, and log out.
 
-## Getting Started
+🚀 Features
+User Registration (Email & Password)
+User Login
+User Logout
+Profile Screen with Current User Email
+Change Password Functionality
+Navigation between Authentication and Profile screens
+Custom UI styling with background images
+📱 Screens
+Authentication Screen
+Email & Password input
+Sign in / Create account
+Styled UI with custom background
+Profile Screen
+Displays current user email
+Change password field
+Logout button
+Different background image from auth screen
+🛠️ Tech Stack
+Flutter
+Dart
+Firebase Authentication
+Firebase Core
+🔧 Setup Instructions
+Clone the repository:
+git clone https://github.com/DareeInn/Flutter-Auth.git
+cd Flutter-Auth
+Install dependencies:
+flutter pub get
+Configure Firebase:
+Add your google-services.json file to:
+android/app/
+Run the app:
+flutter run
+🧪 Testing
 
-This project is a starting point for a Flutter application.
+The following flows were tested successfully:
 
-A few resources to get you started if this is your first Flutter project:
+Register a new user
+Login
+Logout
+Login again
+Change password
+Logout
+Login with new password
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+🐛 Challenges & Fixes
+Fixed Firebase configuration issues (package name & JSON placement)
+Resolved Flutter syntax errors in UI widgets
+Fixed asset path issues in pubspec.yaml
+Ensured proper navigation after login/logout
+📈 Future Improvements
+Add Firebase Auth state listener for automatic navigation
+Improve error handling and validation messages
+Add form validation for better UX
+Separate UI and business logic for scalability
+🔗 Repository
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+GitHub Repo:
+https://github.com/DareeInn/Flutter-Auth
+
+👤 Author
+
+Darin Ward
+
+✅ Submission Summary
+
+This project demonstrates a complete Firebase Authentication flow in Flutter, including user registration, login, logout, profile management, and password updates. All required features were implemented and tested successfully.
