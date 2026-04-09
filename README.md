@@ -70,3 +70,14 @@ Darin Ward
 ✅ Submission Summary
 
 This project demonstrates a complete Firebase Authentication flow in Flutter, including user registration, login, logout, profile management, and password updates. All required features were implemented and tested successfully.
+
+
+Final Development Note (IMPORTANT ADDITION)
+
+Before submission, I made a final refactor commit where I split main.dart into multiple files:
+
+app.dart
+authentication_screen.dart
+profile_screen.dart
+
+This improved code readability, modularity, and maintainability. It also demonstrates version control progress and proper project structure in my GitHub repository.
