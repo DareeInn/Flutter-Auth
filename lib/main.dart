@@ -117,58 +117,99 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
         title: Text(isLogin ? 'Sign In' : 'Register'),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextFormField(
-                controller: _emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                ),
-                validator: _validateEmail,
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                ),
-                validator: _validatePassword,
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: _submit,
-                child: Text(isLogin ? 'Sign In' : 'Register'),
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    isLogin = !isLogin;
-                    message = '';
-                  });
-                },
-                child: Text(
-                  isLogin
-                      ? 'Create an account'
-                      : 'Already have an account? Sign in',
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                message,
-                style: const TextStyle(color: Colors.red),
-                textAlign: TextAlign.center,
-              ),
-            ],
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset('assets/vault_bg.png', fit: BoxFit.cover),
+          Container(
+            color: Colors.black.withOpacity(
+              0.5,
+            ), // Optional: dark overlay for readability
           ),
-        ),
+          Center(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextFormField(
+                        controller: _emailController,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: const InputDecoration(
+                          labelText: 'Email',
+                          labelStyle: TextStyle(color: Colors.white),
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.cyanAccent),
+                          ),
+                        ),
+                        validator: _validateEmail,
+                      ),
+                      const SizedBox(height: 16),
+                      TextFormField(
+                        controller: _passwordController,
+                        obscureText: true,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: const InputDecoration(
+                          labelText: 'Password',
+                          labelStyle: TextStyle(color: Colors.white),
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.cyanAccent),
+                          ),
+                        ),
+                        validator: _validatePassword,
+                      ),
+                      const SizedBox(height: 16),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.black,
+                          backgroundColor: Colors.cyanAccent,
+                        ),
+                        onPressed: _submit,
+                        child: Text(isLogin ? 'Sign In' : 'Register'),
+                      ),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          foregroundColor: Colors.cyanAccent,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isLogin = !isLogin;
+                            message = '';
+                          });
+                        },
+                        child: Text(
+                          isLogin
+                              ? 'Create an account'
+                              : 'Already have an account? Sign in',
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        message,
+                        style: const TextStyle(
+                          color: Colors.cyanAccent,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -238,39 +279,85 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Profile Screen'), centerTitle: true),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              'Current User Email: ${user?.email ?? "No user logged in"}',
-              style: const TextStyle(fontSize: 18),
-            ),
-            const SizedBox(height: 24),
-            TextField(
-              controller: _newPasswordController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'New Password',
-                border: OutlineInputBorder(),
+      body: Stack(
+        children: [
+          // Background image
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/profile_bg.png'),
+                fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _changePassword,
-              child: const Text('Change Password'),
+          ),
+          // Overlay for readability
+          Container(color: Colors.black54),
+          // Main content
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  'Current User Email: ${user?.email ?? "No user logged in"}',
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    shadows: [Shadow(blurRadius: 2, color: Colors.black)],
+                  ),
+                ),
+                const SizedBox(height: 24),
+                TextField(
+                  controller: _newPasswordController,
+                  obscureText: true,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration(
+                    labelText: 'New Password',
+                    labelStyle: TextStyle(color: Colors.white),
+                    border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.cyanAccent),
+                    ),
+                    filled: true,
+                    fillColor: Color(0xAA000000),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.cyanAccent,
+                  ),
+                  onPressed: _changePassword,
+                  child: const Text('Change Password'),
+                ),
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.cyanAccent,
+                  ),
+                  onPressed: _logout,
+                  child: const Text('Logout'),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  message,
+                  style: const TextStyle(
+                    color: Colors.cyanAccent,
+                    fontWeight: FontWeight.bold,
+                    shadows: [Shadow(blurRadius: 2, color: Colors.black)],
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
-            const SizedBox(height: 16),
-            ElevatedButton(onPressed: _logout, child: const Text('Logout')),
-            const SizedBox(height: 16),
-            Text(
-              message,
-              style: const TextStyle(color: Colors.blue),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
